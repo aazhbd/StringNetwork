@@ -6,13 +6,17 @@ import java.util.HashMap;
 import java.util.Vector;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 public class MultithreadedServer {
     Vector<ClientHandler> clients = new Vector<ClientHandler>();
     Vector<String> users = new Vector<String>();
     private static ServerSocket servSocket;
     private static final int PORT = 1247;
+    int[] choice;
 
-    public MultithreadedServer() throws IOException {
+    public MultithreadedServer(int[] ch) throws IOException {
+        this.choice = ch;
         servSocket = new ServerSocket(PORT);
         while (true) {
 
@@ -27,7 +31,27 @@ public class MultithreadedServer {
     }
 
     public static void main(String[] args) throws IOException {
-        MultithreadedServer ms = new MultithreadedServer();
+        int probab_send = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for SEND: "));
+        int probab_received = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for RECEIVE: "));
+        int probab_internal = 100 - (probab_received + probab_send);
+
+        if((probab_received + probab_send + probab_internal) != 100) {
+            JOptionPane.showMessageDialog(null, "Invalid probability!!");
+            return;
+        }
+
+        int choice[] = new int[100];
+
+        for(int i = 0; i < probab_send; i++) {
+            choice[i] = 1;
+        }
+        for(int i = probab_send; i < probab_send + probab_received; i++) {
+            choice[i] = 2;
+        }
+        for(int i = probab_send + probab_received; i < 100; i++) {
+            choice[i] = 3;
+        }
+        MultithreadedServer ms = new MultithreadedServer(choice);
     }
 
     class ClientHandler extends Thread {
@@ -84,11 +108,12 @@ public class MultithreadedServer {
                 int flagR = 0, flagI = 0, flagS = 1;
                 do {
                     Random rand = new Random();
-                    int i = rand.nextInt(10);
-                    int choice[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                    int i = rand.nextInt(100);
                     int ch = choice[i];
 
-                    if (ch == 5 || ch == 6) { //Receive
+                    for(i = 0; i < 100; i++) System.out.print(choice[i] + " ");
+
+                    if (ch == 2) { //Receive
                         /*START: server clock increment by 1 */
                         t_clk = Integer.parseInt("" + this.values.get("SeverValue")) + 1;
                         this.values.put("SeverValue", t_clk);
@@ -109,7 +134,7 @@ public class MultithreadedServer {
                         }
                     }
 
-                    else if (ch == 1 || ch == 2 || ch == 3 || ch == 4) { //Send
+                    else if (ch == 1) { //Send
                         /*START: server clock increment by 1 */
                         t_clk = Integer.parseInt("" + this.values.get("SeverValue")) + 1;
                         this.values.put("SeverValue", t_clk);

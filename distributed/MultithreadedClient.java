@@ -2,6 +2,8 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 public class MultithreadedClient {
     private static InetAddress host;
     private static final int PORT = 1247;
@@ -14,6 +16,27 @@ public class MultithreadedClient {
 
         int counter = 0;
         int loop_var = 1;
+
+        int probab_send = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for SEND: "));
+        int probab_received = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for RECEIVE: "));
+        int probab_internal = 100 - (probab_received + probab_send);
+
+        if((probab_received + probab_send + probab_internal) != 100) {
+            JOptionPane.showMessageDialog(null, "Invalid probability!!");
+            return;
+        }
+
+        int choice[] = new int[100];
+
+        for(int i = 0; i < probab_send; i++) {
+            choice[i] = 1;
+        }
+        for(int i = probab_send; i < probab_send + probab_received; i++) {
+            choice[i] = 2;
+        }
+        for(int i = probab_send + probab_received; i < 100; i++) {
+            choice[i] = 3;
+        }
 
         try {
             host = InetAddress.getLocalHost();
@@ -29,11 +52,10 @@ public class MultithreadedClient {
 
             do {
                 Random rand = new Random();
-                int i = rand.nextInt(10);
-                int choice[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                int i = rand.nextInt(100);
                 int c = choice[i];
 
-                if (c == 1 || c == 2 || c == 3 || c == 4) { //Send
+                if (c == 1) { //Send
                     counter++;
                     //System.out.println("Send");
                     if (flagR == 1){
@@ -44,7 +66,7 @@ public class MultithreadedClient {
                     }
                 }
 
-                else if (c == 5 || c == 6) { //Receive
+                else if (c == 2) { //Receive
                     counter++;
                     System.out.println("Receive");
                     if (flagS == 1){
