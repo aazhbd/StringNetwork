@@ -18,14 +18,23 @@ public class MultithreadedServer {
     public MultithreadedServer(int[] ch) throws IOException {
         this.choice = ch;
         servSocket = new ServerSocket(PORT);
+        HashMap<String, Integer> values = new HashMap<String, Integer>();
+        HashMap<String, ClockValues> data = new HashMap<String, ClockValues>();
+        values.put("SeverValue", 0);
+
+        data.put("Thread-0", new ClockValues(0, 0));
+        data.put("Thread-1", new ClockValues(0, 0));
+        data.put("Thread-2", new ClockValues(0, 0));
+        data.put("Thread-3", new ClockValues(0, 0));
+
         while (true) {
 
             Socket client = servSocket.accept();
-            System.out.println("\nNew client accepted.\n");
+            System.out.println("\n********************************New client accepted.*****************************\n");
             client.setSoTimeout(50000);
 
             ClientHandler handler;
-            handler = new ClientHandler(client);
+            handler = new ClientHandler(client, values, data);
             clients.add(handler);
         }
     }
@@ -55,7 +64,6 @@ public class MultithreadedServer {
     }
 
     class ClientHandler extends Thread {
-
         private Socket client;
         private BufferedReader in;
         private PrintWriter out;
@@ -63,16 +71,9 @@ public class MultithreadedServer {
         HashMap<String, Integer> values;
         HashMap<String, ClockValues> data;
 
-        public ClientHandler(Socket socket) {
-            this.values = new HashMap<String, Integer>();
-            this.values.put("SeverValue", 0);
-
-            data = new HashMap<String, ClockValues>();
-
-            this.data.put("Thread-0", new ClockValues(0, 0));
-            this.data.put("Thread-1", new ClockValues(0, 0));
-            this.data.put("Thread-2", new ClockValues(0, 0));
-            this.data.put("Thread-3", new ClockValues(0, 0));
+        public ClientHandler(Socket socket, HashMap<String, Integer> values, HashMap<String, ClockValues> data) {
+            this.values = values;
+            this.data = data;
             //this.data.put("5", new ClockValues(0, 0));
 
             client = socket;
@@ -111,7 +112,7 @@ public class MultithreadedServer {
                     int i = rand.nextInt(100);
                     int ch = choice[i];
 
-                    for(i = 0; i < 100; i++) System.out.print(choice[i] + " ");
+                    //for(i = 0; i < 100; i++) System.out.print(choice[i] + " ");
 
                     if (ch == 2) { //Receive
                         /*START: server clock increment by 1 */
@@ -128,6 +129,8 @@ public class MultithreadedServer {
                             }
 
                             System.out.println("Received " + line + " from Connection " + this.getName() + ".");
+
+                            //int current_offset = this.data.get(this.getName()).getOffset();                            
                             this.data.put(this.getName(), new ClockValues(n, 0));
                             flagR = 1;
                             flagS = 0;
@@ -143,14 +146,14 @@ public class MultithreadedServer {
                         System.out.println("Send");
 
                         if (flagI == 1) {
-                            System.out.println("Internal Send");
+                            //System.out.println("Internal Send");
                             for (ClientHandler c : clients) {
                                 preClock = this.data.get(c.getName()).getClock();
                                 offset = avg - preClock;
-                                System.out.println("offset SEND from Server = " + offset + "\n");
-                                c.sendMessage("" + offset);
+                                System.out.println("Avgerage  = " + avg +" and offset SEND from Server to " +c.getName() +"= " + offset + "\n");
                                 int current_clk = this.data.get(c.getName()).getClock();
                                 this.data.put(c.getName(), new ClockValues(current_clk, offset));
+                                c.sendMessage("" + offset);
                             }
                             flagI = 0;
                             flagS = 1;
@@ -167,6 +170,7 @@ public class MultithreadedServer {
 
                             for (Map.Entry m : this.data.entrySet()) {
                                 ClockValues tmpclock = (ClockValues) m.getValue();
+                                System.out.println("Thread Name : " + m.getKey() + " Clock : " + tmpclock.getClock());
                                 sum += Integer.parseInt("" + tmpclock.getClock());
                             }
                             avg = sum / (hSize + 1);
@@ -192,7 +196,7 @@ public class MultithreadedServer {
             } finally {
                 try {
                     if (client != null) {
-                        System.out.println("Closing down connection...");
+                        System.out.println("********************Closing down connection...***********************");
                         client.close();
                     }
                 } catch (IOException e) {

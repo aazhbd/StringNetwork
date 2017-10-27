@@ -93,7 +93,7 @@ public class MultithreadedClient {
                     }
                 }
                 loop_var++;
-            } while (loop_var <= 50);
+            } while (loop_var <= 500);
             //System.out.println("loop var = " +loop_var);
             counter = -1;
             out.println(Transfer.encrypt(counter) + "\n");
