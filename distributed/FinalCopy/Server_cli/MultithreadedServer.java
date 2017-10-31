@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.Vector;
 import java.util.*;
 
-import javax.swing.JOptionPane;
-
 /*
  * A TCP server (MO) that runs on port 5370;
  * When a client connects it receives the PO's local CLK value
@@ -48,16 +46,22 @@ public class MultithreadedServer {
 
     public static void main(String[] args) throws IOException {
         /*
-        * Displays 2 dialog boxes asking for the probablity for Send and Receive Event. From
-        * these two inputs it will calculate the probablity for internal
-        * event.
+        * Pass two command line parameters for the SEND and RECEIVE events
         */
-        int probab_send = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for SEND: "));
-        int probab_received = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for RECEIVE: "));
+        int probab_send = 0, probab_received = 0;
+
+        try {
+            probab_send = Integer.parseInt(args[0]);
+            probab_received = Integer.parseInt(args[1]);    
+        }
+        catch(Exception e) {
+            System.out.println("Enter command line parameters for probability values.");
+        }
+
         int probab_internal = 100 - (probab_received + probab_send);
 
         if ((probab_received + probab_send + probab_internal) != 100) {
-            JOptionPane.showMessageDialog(null, "Invalid probability!!");
+            System.out.println("Invalid probability!!");
             return;
         }
 
@@ -67,6 +71,7 @@ public class MultithreadedServer {
         * 2 indicate RECEIVE event
         * 3 indicate Internal Communication Event
         */
+        
         int choice[] = new int[100];
 
         for (int i = 0; i < probab_send; i++) {
@@ -78,7 +83,7 @@ public class MultithreadedServer {
         for (int i = probab_send + probab_received; i < 100; i++) {
             choice[i] = 3;
         }
-        MultithreadedServer ms = new MultithreadedServer(choice);
+        MultithreadedServer ms = new MultithreadedServer(choice);*/
     }
 
     class ClientHandler extends Thread {

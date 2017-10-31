@@ -2,8 +2,6 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import javax.swing.JOptionPane;
-
 /*
  * Client (PO) side code for a system that maintains 
  * Clock consistency, associated drifts, inter-process communication 
@@ -27,17 +25,24 @@ public class MultithreadedClient {
         int counter = 1;    //it containts the PO local clock value
         int loop_var = 1;   //loop control variable
 
+
         /*
-        * Displays 2 dialog boxes asking for the probablity for Send and Receive Event. From
-        * these two inputs it will calculate the probablity for internal
-        * event.
+        * Pass two command line parameters for the SEND and RECEIVE events
         */
-        int probab_send = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for SEND: "));
-        int probab_received = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for RECEIVE: "));
+        int probab_send = 0, probab_received = 0;
+        
+        try {
+            probab_send = Integer.parseInt(args[0]);
+            probab_received = Integer.parseInt(args[1]);    
+        }
+        catch(Exception e) {
+            System.out.println("Enter command line parameters for probability values.");
+        }
+
         int probab_internal = 100 - (probab_received + probab_send);
- 
-        if((probab_received + probab_send + probab_internal) != 100) {
-            JOptionPane.showMessageDialog(null, "Invalid probability!!");
+
+        if ((probab_received + probab_send + probab_internal) != 100) {
+            System.out.println("Invalid probability!!");
             return;
         }
         /*

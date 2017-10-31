@@ -8,12 +8,11 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
-/*
- * A TCP server (MO) that runs on port 5370;
- * When a client connects it receives the PO's local CLK value
- * and calculate the average of the all PO's and MO's local value.
- * Finally broadcast the corresponding offset to all POs that 
- * require to adjust their local clk value to sync with global clk.
+/**
+ * A TCP server that runs on port 5370  When a client connects, it
+ * sends the client the current date and time, then closes the
+ * connection with that client.  Arguably just about the simplest
+ * server you can write.
  */
 
 
@@ -30,28 +29,32 @@ public class MultithreadedServer {
         HashMap<String, Integer> values = new HashMap<String, Integer>();
         HashMap<String, ClockValues> data = new HashMap<String, ClockValues>();
 
-        /*Entities that are going to be use each client theread are Initialized here*/
+        HashMap<String, SyncStatus> sync_table = new HashMap<String, SyncStatus>();
+
         values.put("SeverValue", 0);
+
         data.put("Thread-0", new ClockValues(0, 0, 0));
         data.put("Thread-1", new ClockValues(0, 0, 0));
-        data.put("Thread-2", new ClockValues(0, 0, 0));
-        data.put("Thread-3", new ClockValues(0, 0, 0));
    
+
+        sync_table.put("Thread-0", new SyncStatus(0, -1));
+        sync_table.put("Thread-1", new SyncStatus(0, -1));
+        sync_table.put("Thread-2", new SyncStatus(0, -1));
+        sync_table.put("Thread-3", new SyncStatus(0, -1));
+
         while (true) {
-            /*New client accepted*/
+
             Socket client = servSocket.accept();
+            //System.out.println("\n********************************New client accepted.*****************************\n");
+            //client.setSoTimeout(50000);
+
             ClientHandler handler;
-            handler = new ClientHandler(client, values, data);
+            handler = new ClientHandler(client, values, data, sync_table);
             clients.add(handler);
         }
     }
 
     public static void main(String[] args) throws IOException {
-        /*
-        * Displays 2 dialog boxes asking for the probablity for Send and Receive Event. From
-        * these two inputs it will calculate the probablity for internal
-        * event.
-        */
         int probab_send = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for SEND: "));
         int probab_received = Integer.parseInt(JOptionPane.showInputDialog("Enter probablity for RECEIVE: "));
         int probab_internal = 100 - (probab_received + probab_send);
@@ -61,12 +64,6 @@ public class MultithreadedServer {
             return;
         }
 
-        /*
-        * Generating Choice array that contains 1, 2, and 3 only where;
-        * 1 indicate SEND event
-        * 2 indicate RECEIVE event
-        * 3 indicate Internal Communication Event
-        */
         int choice[] = new int[100];
 
         for (int i = 0; i < probab_send; i++) {
@@ -88,14 +85,17 @@ public class MultithreadedServer {
         String name, message, response;
         HashMap<String, Integer> values;
         HashMap<String, ClockValues> data;
+        HashMap<String, SyncStatus> sync_table;
 
-        public ClientHandler(Socket socket, HashMap<String, Integer> values, HashMap<String, ClockValues> data) {
+        public ClientHandler(Socket socket, HashMap<String, Integer> values, HashMap<String, ClockValues> data,
+                HashMap<String, SyncStatus> sync_table) {
             this.values = values;
             this.data = data;
 
+            this.sync_table = sync_table;
+
             client = socket;
             try {
-                /* Initialize input and output streams*/
                 in = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 out = new PrintWriter(client.getOutputStream(), true);
             } catch (IOException e) {
@@ -107,6 +107,7 @@ public class MultithreadedServer {
         public void sendMessage(String msg) {
             int offset = Transfer.encrypt(Integer.parseInt(msg));
             out.println(offset + "\n");
+            //out.flush();
         }
 
         public void boradcast(String message) {
@@ -124,52 +125,64 @@ public class MultithreadedServer {
             int hSize, sum, avg = 0, t_clk = 0, n;
             int offset = 0, preClock = 0, preOldClock = 0;
             try {
-                int flagR = 0, flagS = 1;   // these flags are used to sync SEND and RECIEVE events within a PO
+                
+                int flagR = 0, flagS = 1;
+                
                 String message = "";
                 String received = "";
-                received = in.readLine();   //read  is there any entry waiting in input buffer
+                received = in.readLine();
                 
                 do {
-                    /*
-                    * Random selection within 3 events take place here!
-                    */
                     Random rand = new Random();
                     int i = rand.nextInt(100);
                     int ch = choice[i];
     
-                    /* SEND Event*/
-                    if (ch == 1) {
-                        /*Server clock value update here by 1*/
+                    if (ch == 1) { //Send
                         t_clk = Integer.parseInt("" + this.values.get("SeverValue")) + 1;
                         this.values.put("SeverValue", t_clk);
 
-    
-                        if (flagR == 1){
-                            hSize = 4;      //total num of POs
+                        SyncStatus status = this.sync_table.get(this.getName());
+
+                        int r_flag = status.getRflag();
+                        int seq_num = status.getSeqNum();
+                        int proceed = 1;
+
+                        for (Map.Entry m : this.sync_table.entrySet()) {
+                            SyncStatus ss = (SyncStatus) m.getValue();
+                            int r = ss.getRflag();
+                            int s = ss.getSeqNum();
+                            if (r == 1 && s < seq_num) {
+                                proceed = 0;
+                            }
+                        }
+
+                        if (flagR == 1){//} && proceed == 1) {
+                            hSize = 2;// total num of POs
                             sum = Integer.parseInt("" + this.values.get("SeverValue"));
+                            //System.out.println("Server Clock (B): " + this.values.get("SeverValue"));
                             System.out.println(+ this.values.get("SeverValue"));
 
-                            /*
-                            * Read Input buffer stream
-                            * If data is waiting buffer then don't SEND anything
-                            * otherwise find the average of the 4 POs and MOs clock value
-                            * and Broadcast to the all POs.
-                            */
                             message = in.readLine();
                             message = message.trim();
                             if((message.equals("")) ){
-                                /*Sum all the PO's clock values including the MO's value */
+
                                 for (Map.Entry m : this.data.entrySet()) {
-                                    /*tmpclock contains 3 tupple are: clock, offset, oldValue*/
-                                    ClockValues tmpclock = (ClockValues) m.getValue();
-                                    sum += Integer.parseInt("" + tmpclock.getClock());
+                                    ClockValues tmpclock = (ClockValues) m.getValue(); //3 tupple
+                                    //if ((""+m.getKey()).equals(""+this.getName())) {
+                                        sum += Integer.parseInt("" + tmpclock.getClock());
+                                        //System.out.println("Sum(in) = "+sum);
+                                    /*} else {
+                                        sum += Integer.parseInt("" + tmpclock.getOldValue());
+                                        System.out.println("Sum(in) = "+sum);
+                                    }*/
+                                    
                                 }
+                                //System.out.println("Sum (out) = "+sum);
                                 avg = sum / (hSize + 1);
-                                /* Update the MO clock value by the average */
                                 this.values.put("SeverValue", avg);
+                                //System.out.println("Server Clock (A): " + this.values.get("SeverValue") + "\n\n");
                                 System.out.println(+ this.values.get("SeverValue"));
 
-                                /* Calculate the offset and Send offset to all POs */
                                 for (ClientHandler c : clients) {
                                     preClock = this.data.get(c.getName()).getClock();
                                     preOldClock = this.data.get(c.getName()).getOldValue();
@@ -178,52 +191,82 @@ public class MultithreadedServer {
                                     } else {
                                         offset = avg - preOldClock;
                                     }
+                                    
+                                    if (preClock != 0) {
+                                        //this.data.put(c.getName(), new ClockValues(avg, offset, preOldClock));
+                                        //System.out.println("(if)Server send to " + c.getName() + ": " + avg + " - " + preOldClock + "=" + offset + "\n");
+                                    }
+                                    else{
+                                        //this.data.put(c.getName(), new ClockValues(avg, offset, 0)); 
+                                        //System.out.println("(else)Server send to " + c.getName() + ": " + avg + " - " + preClock + "=" + offset + "\n");
+                                    }
 
                                     int offset_s = this.data.get(c.getName()).getOffset();
                                     c.sendMessage("" + offset_s);
-                                } 
-                            }   //if((message.equals("")))
+
+                                    this.sync_table.put(this.getName(), new SyncStatus(0, seq_num));
+                                }
+                            }//if((message.equals("")))
                             else {
                                 received = message;
+                                //System.out.println("Send: Response = "+ message);
                                 flagS = 1;
                                 flagR = 0;
                             }
                         }                        
                     }
-                    
-                    /* RECEIVE Event*/
-                    else if (ch == 2) {
-                        /*Server clock value update here by 1*/
+                    else if (ch == 2) { //Receive
                         t_clk = Integer.parseInt("" + this.values.get("SeverValue")) + 1;
                         this.values.put("SeverValue", t_clk);
 
-                        if (flagS == 1) {
-                            /* Received clock value decrypted here */
-                            line = "" + Transfer.decrypt(Integer.parseInt(received));
-                            n = Integer.parseInt(line);
-                            
-                            /* PO send -1 to MO once it terminate */
-                            if (n == -1) {
-                                break;
+                        int smax = 0;
+
+                        for (Map.Entry m : this.sync_table.entrySet()) {
+                            SyncStatus ss = (SyncStatus) m.getValue();
+                            int r_flag = ss.getRflag();
+                            int snum = ss.getSeqNum();
+                            if (r_flag == 1 && snum > smax) {
+                                smax = snum;
                             }
-                            this.data.put(this.getName(), new ClockValues(n, 0, n));
+                        }
+
+                        if (flagS == 1) {
                             
+                            //System.out.println("Receive");
+                            //message = in.readLine();
+                            //message = message.trim();
+                            //if (!(message.isEmpty())) 
+                            //{
+                                line = "" + Transfer.decrypt(Integer.parseInt(received));
+                                n = Integer.parseInt(line);
+                                if (n == -1) {
+                                    break;
+                                }
+                                //System.out.println("Received " + line + " from Connection " + this.getName() + ".");
+                                
+                                //int current_clk = this.data.get(this.getName()).getClock();
+                                //this.data.put(this.getName(), new ClockValues(n, 0, current_clk));
+                                this.data.put(this.getName(), new ClockValues(n, 0, n));
+                                this.sync_table.put(this.getName(), new SyncStatus(1, smax + 1));
                                 flagR = 1;
                                 flagS = 0;
+                            //}
+                            //line = "" + Transfer.decrypt(Integer.parseInt(in.readLine())); 
                         }
-                    }                   
+                    }
 
-                    /* Internal Communication Event*/
-                    else {
+                    
+
+                    else { //Internal communication
+                             //System.out.println("Internal communication" + this.getName() + "\n");
                         try {
-                            /*Server clock value update here by 1*/
                             t_clk = Integer.parseInt("" + this.values.get("SeverValue")) + 1;
                             this.values.put("SeverValue", t_clk);
-                            /*thread to sleep for 100 milliseconds*/  
                             Thread.sleep(100);
                         } catch (Exception e) {
                             System.out.println(e);
                         }
+                        //}
                     }
                 } while (true);
             } catch (
@@ -233,6 +276,7 @@ public class MultithreadedServer {
             } finally {
                 try {
                     if (client != null) {
+                        //System.out.println("********************Closing down connection...***********************");
                         client.close();
                     }
                 } catch (IOException e) {
@@ -243,7 +287,6 @@ public class MultithreadedServer {
     }
 }
 
-/* Encypt and Decrypt mechanism Implemented here */
 class Transfer {
     public static int encrypt(int item) {
         return item + 10;
@@ -254,10 +297,6 @@ class Transfer {
     }
 }
 
-/*
-* It contains current clock value, offset and old clock value of a PA
-* Passed as a parameter in haHashMap<String, ClockValues>
-*/
 class ClockValues {
     public int clock;
     public int offset;
@@ -297,3 +336,34 @@ class ClockValues {
         return "" + this.clock + " " + this.offset + " " + this.oldValue;
     }
 }
+
+class SyncStatus {
+    public int r_flag;
+    public int seq_num;
+
+    public SyncStatus(int r_flag, int seq_num) {
+        this.r_flag = r_flag;
+        this.seq_num = seq_num;
+    }
+
+    public int getRflag() {
+        return this.r_flag;
+    }
+
+    public void setRflag(int r_flag) {
+        this.r_flag = r_flag;
+    }
+
+    public int getSeqNum() {
+        return this.seq_num;
+    }
+
+    public void setSeqNum(int seq_num) {
+        this.seq_num = seq_num;
+    }
+
+    public String show() {
+        return "" + this.r_flag + " " + this.seq_num;
+    }
+}
+

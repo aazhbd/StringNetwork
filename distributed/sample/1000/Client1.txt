@@ -1,0 +1,1022 @@
+Client Clock (B): 1
+Offset (S) = -1
+Client Clock (A): 2
+
+
+Client Clock (B): 5
+Offset (S) = -4
+Client Clock (A): 4
+
+
+Client Clock (B): 8
+Offset (S) = -6
+Client Clock (A): 7
+
+
+Client Clock (B): 10
+Offset (S) = -7
+Client Clock (A): 6
+
+
+Client Clock (B): 10
+Offset (S) = -7
+Client Clock (A): 5
+
+
+Client Clock (B): 6
+Offset (S) = -4
+Client Clock (A): 4
+
+
+Client Clock (B): 6
+Offset (S) = -4
+Client Clock (A): 4
+
+
+Client Clock (B): 6
+Offset (S) = -4
+Client Clock (A): 4
+
+
+Client Clock (B): 11
+Offset (S) = -8
+Client Clock (A): 6
+
+
+Client Clock (B): 14
+Offset (S) = -10
+Client Clock (A): 6
+
+
+Client Clock (B): 7
+Offset (S) = -3
+Client Clock (A): 9
+
+
+Client Clock (B): 15
+Offset (S) = -11
+Client Clock (A): 7
+
+
+Client Clock (B): 9
+Offset (S) = -1
+Client Clock (A): 20
+
+
+Client Clock (B): 22
+Offset (S) = 0
+Client Clock (A): 28
+
+
+Client Clock (B): 29
+Offset (S) = 0
+Client Clock (A): 34
+
+
+Client Clock (B): 41
+Offset (S) = 1
+Client Clock (A): 44
+
+
+Client Clock (B): 45
+Offset (S) = 0
+Client Clock (A): 47
+
+
+Client Clock (B): 55
+Offset (S) = -1
+Client Clock (A): 57
+
+
+Client Clock (B): 58
+Offset (S) = 0
+Client Clock (A): 62
+
+
+Client Clock (B): 63
+Offset (S) = -4
+Client Clock (A): 61
+
+
+Client Clock (B): 64
+Offset (S) = -1
+Client Clock (A): 66
+
+
+Client Clock (B): 69
+Offset (S) = -1
+Client Clock (A): 70
+
+
+Client Clock (B): 71
+Offset (S) = 0
+Client Clock (A): 74
+
+
+Client Clock (B): 75
+Offset (S) = 0
+Client Clock (A): 77
+
+
+Client Clock (B): 78
+Offset (S) = -16
+Client Clock (A): 66
+
+
+Client Clock (B): 68
+Offset (S) = -1
+Client Clock (A): 70
+
+
+Client Clock (B): 71
+Offset (S) = -1
+Client Clock (A): 72
+
+
+Client Clock (B): 74
+Offset (S) = -21
+Client Clock (A): 56
+
+
+Client Clock (B): 58
+Offset (S) = -29
+Client Clock (A): 33
+
+
+Client Clock (B): 35
+Offset (S) = -3
+Client Clock (A): 34
+
+
+Client Clock (B): 35
+Offset (S) = -29
+Client Clock (A): 9
+
+
+Client Clock (B): 18
+Offset (S) = -5
+Client Clock (A): 17
+
+
+Client Clock (B): 19
+Offset (S) = -39
+Client Clock (A): 23
+
+
+Client Clock (B): 26
+Offset (S) = -2
+Client Clock (A): 33
+
+
+Client Clock (B): 34
+Offset (S) = -38
+Client Clock (A): 0
+
+
+Client Clock (B): 1
+Offset (S) = 0
+Client Clock (A): 6
+
+
+Client Clock (B): 7
+Offset (S) = -38
+Client Clock (A): 8
+
+
+Client Clock (B): 9
+Offset (S) = -4
+Client Clock (A): 8
+
+
+Client Clock (B): 9
+Offset (S) = -40
+Client Clock (A): 10
+
+
+Client Clock (B): 11
+Offset (S) = -3
+Client Clock (A): 10
+
+
+Client Clock (B): 11
+Offset (S) = -46
+Client Clock (A): 12
+
+
+Client Clock (B): 16
+Offset (S) = -9
+Client Clock (A): 9
+
+
+Client Clock (B): 11
+Offset (S) = 2
+Client Clock (A): 15
+
+
+Client Clock (B): 17
+Offset (S) = 3
+Client Clock (A): 22
+
+
+Client Clock (B): 26
+Offset (S) = -49
+Client Clock (A): 27
+
+
+Client Clock (B): 28
+Offset (S) = -51
+Client Clock (A): 33
+
+
+Client Clock (B): 35
+Offset (S) = -52
+Client Clock (A): 37
+
+
+Client Clock (B): 40
+Offset (S) = -44
+Client Clock (A): 41
+
+
+Client Clock (B): 45
+Offset (S) = -41
+Client Clock (A): 9
+
+
+Client Clock (B): 14
+Offset (S) = -42
+Client Clock (A): 16
+
+
+Client Clock (B): 19
+Offset (S) = -8
+Client Clock (A): 14
+
+
+Client Clock (B): 16
+Offset (S) = -31
+Client Clock (A): 18
+
+
+Client Clock (B): 21
+Offset (S) = -6
+Client Clock (A): 19
+
+
+Client Clock (B): 23
+Offset (S) = -15
+Client Clock (A): 13
+
+
+Client Clock (B): 14
+Offset (S) = -8
+Client Clock (A): 10
+
+
+Client Clock (B): 15
+Offset (S) = -23
+Client Clock (A): 18
+
+
+Client Clock (B): 19
+Offset (S) = -8
+Client Clock (A): 13
+
+
+Client Clock (B): 16
+Offset (S) = 3
+Client Clock (A): 22
+
+
+Client Clock (B): 23
+Offset (S) = -3
+Client Clock (A): 23
+
+
+Client Clock (B): 24
+Offset (S) = 1
+Client Clock (A): 27
+
+
+Client Clock (B): 28
+Offset (S) = -5
+Client Clock (A): 25
+
+
+Client Clock (B): 26
+Offset (S) = -8
+Client Clock (A): 21
+
+
+Client Clock (B): 24
+Offset (S) = -2
+Client Clock (A): 24
+
+
+Client Clock (B): 25
+Offset (S) = -15
+Client Clock (A): 14
+
+
+Client Clock (B): 15
+Offset (S) = 0
+Client Clock (A): 17
+
+
+Client Clock (B): 18
+Offset (S) = -22
+Client Clock (A): 20
+
+
+Client Clock (B): 22
+Offset (S) = 1
+Client Clock (A): 30
+
+
+Client Clock (B): 32
+Offset (S) = -5
+Client Clock (A): 29
+
+
+Client Clock (B): 31
+Offset (S) = 3
+Client Clock (A): 36
+
+
+Client Clock (B): 39
+Offset (S) = 3
+Client Clock (A): 44
+
+
+Client Clock (B): 47
+Offset (S) = 5
+Client Clock (A): 54
+
+
+Client Clock (B): 55
+Offset (S) = 4
+Client Clock (A): 61
+
+
+Client Clock (B): 64
+Offset (S) = 9
+Client Clock (A): 77
+
+
+Client Clock (B): 80
+Offset (S) = -1
+Client Clock (A): 89
+
+
+Client Clock (B): 91
+Offset (S) = -4
+Client Clock (A): 89
+
+
+Client Clock (B): 90
+Offset (S) = 10
+Client Clock (A): 102
+
+
+Client Clock (B): 103
+Offset (S) = 0
+Client Clock (A): 105
+
+
+Client Clock (B): 107
+Offset (S) = 10
+Client Clock (A): 127
+
+
+Client Clock (B): 129
+Offset (S) = 7
+Client Clock (A): 142
+
+
+Client Clock (B): 152
+Offset (S) = 0
+Client Clock (A): 155
+
+
+Client Clock (B): 164
+Offset (S) = -6
+Client Clock (A): 163
+
+
+Client Clock (B): 164
+Offset (S) = 3
+Client Clock (A): 170
+
+
+Client Clock (B): 174
+Offset (S) = 0
+Client Clock (A): 176
+
+
+Client Clock (B): 177
+Offset (S) = 1
+Client Clock (A): 180
+
+
+Client Clock (B): 182
+Offset (S) = -4
+Client Clock (A): 180
+
+
+Client Clock (B): 182
+Offset (S) = 3
+Client Clock (A): 187
+
+
+Client Clock (B): 189
+Offset (S) = -2
+Client Clock (A): 189
+
+
+Client Clock (B): 192
+Offset (S) = 1
+Client Clock (A): 195
+
+
+Client Clock (B): 200
+Offset (S) = -11
+Client Clock (A): 193
+
+
+Client Clock (B): 198
+Offset (S) = 4
+Client Clock (A): 205
+
+
+Client Clock (B): 207
+Offset (S) = -14
+Client Clock (A): 196
+
+
+Client Clock (B): 199
+Offset (S) = 0
+Client Clock (A): 203
+
+
+Client Clock (B): 205
+Offset (S) = -5
+Client Clock (A): 210
+
+
+Client Clock (B): 211
+Offset (S) = 1
+Client Clock (A): 214
+
+
+Client Clock (B): 217
+Offset (S) = -24
+Client Clock (A): 195
+
+
+Client Clock (B): 199
+Offset (S) = -26
+Client Clock (A): 177
+
+
+Client Clock (B): 178
+Offset (S) = -30
+Client Clock (A): 155
+
+
+Client Clock (B): 157
+Offset (S) = -5
+Client Clock (A): 154
+
+
+Client Clock (B): 155
+Offset (S) = -12
+Client Clock (A): 145
+
+
+Client Clock (B): 147
+Offset (S) = -7
+Client Clock (A): 142
+
+
+Client Clock (B): 143
+Offset (S) = -10
+Client Clock (A): 135
+
+
+Client Clock (B): 136
+Offset (S) = -2
+Client Clock (A): 139
+
+
+Client Clock (B): 142
+Offset (S) = -13
+Client Clock (A): 131
+
+
+Client Clock (B): 133
+Offset (S) = -4
+Client Clock (A): 132
+
+
+Client Clock (B): 133
+Offset (S) = -5
+Client Clock (A): 135
+
+
+Client Clock (B): 137
+Offset (S) = 1
+Client Clock (A): 141
+
+
+Client Clock (B): 142
+Offset (S) = 0
+Client Clock (A): 146
+
+
+Client Clock (B): 148
+Offset (S) = -7
+Client Clock (A): 143
+
+
+Client Clock (B): 145
+Offset (S) = -4
+Client Clock (A): 143
+
+
+Client Clock (B): 146
+Offset (S) = -9
+Client Clock (A): 139
+
+
+Client Clock (B): 140
+Offset (S) = -16
+Client Clock (A): 127
+
+
+Client Clock (B): 128
+Offset (S) = -16
+Client Clock (A): 114
+
+
+Client Clock (B): 116
+Offset (S) = -19
+Client Clock (A): 100
+
+
+Client Clock (B): 105
+Offset (S) = -15
+Client Clock (A): 94
+
+
+Client Clock (B): 95
+Offset (S) = -3
+Client Clock (A): 99
+
+
+Client Clock (B): 101
+Offset (S) = -2
+Client Clock (A): 104
+
+
+Client Clock (B): 105
+Offset (S) = -15
+Client Clock (A): 94
+
+
+Client Clock (B): 95
+Offset (S) = -16
+Client Clock (A): 81
+
+
+Client Clock (B): 82
+Offset (S) = 0
+Client Clock (A): 85
+
+
+Client Clock (B): 88
+Offset (S) = -6
+Client Clock (A): 84
+
+
+Client Clock (B): 85
+Offset (S) = 3
+Client Clock (A): 90
+
+
+Client Clock (B): 94
+Offset (S) = -7
+Client Clock (A): 89
+
+
+Client Clock (B): 90
+Offset (S) = 0
+Client Clock (A): 92
+
+
+Client Clock (B): 94
+Offset (S) = -13
+Client Clock (A): 88
+
+
+Client Clock (B): 90
+Offset (S) = 0
+Client Clock (A): 93
+
+
+Client Clock (B): 94
+Offset (S) = -3
+Client Clock (A): 93
+
+
+Client Clock (B): 95
+Offset (S) = 3
+Client Clock (A): 103
+
+
+Client Clock (B): 104
+Offset (S) = 4
+Client Clock (A): 114
+
+
+Client Clock (B): 115
+Offset (S) = -12
+Client Clock (A): 111
+
+
+Client Clock (B): 113
+Offset (S) = -3
+Client Clock (A): 112
+
+
+Client Clock (B): 114
+Offset (S) = -17
+Client Clock (A): 99
+
+
+Client Clock (B): 100
+Offset (S) = 1
+Client Clock (A): 103
+
+
+Client Clock (B): 111
+Offset (S) = -24
+Client Clock (A): 93
+
+
+Client Clock (B): 94
+Offset (S) = -6
+Client Clock (A): 90
+
+
+Client Clock (B): 92
+Offset (S) = -34
+Client Clock (A): 60
+
+
+Client Clock (B): 63
+Offset (S) = -39
+Client Clock (A): 27
+
+
+Client Clock (B): 28
+Offset (S) = -8
+Client Clock (A): 23
+
+
+Client Clock (B): 24
+Offset (S) = -47
+Client Clock (A): 25
+
+
+Client Clock (B): 27
+Offset (S) = -56
+Client Clock (A): 29
+
+
+Client Clock (B): 31
+Offset (S) = -63
+Client Clock (A): 36
+
+
+Client Clock (B): 38
+Offset (S) = -61
+Client Clock (A): 39
+
+
+Client Clock (B): 45
+Offset (S) = -15
+Client Clock (A): 36
+
+
+Client Clock (B): 37
+Offset (S) = -76
+Client Clock (A): 39
+
+
+Client Clock (B): 40
+Offset (S) = -75
+Client Clock (A): 45
+
+
+Client Clock (B): 47
+Offset (S) = -90
+Client Clock (A): 48
+
+
+Client Clock (B): 52
+Offset (S) = -105
+Client Clock (A): 54
+
+
+Client Clock (B): 56
+Offset (S) = -22
+Client Clock (A): 37
+
+
+Client Clock (B): 38
+Offset (S) = -116
+Client Clock (A): 41
+
+
+Client Clock (B): 42
+Offset (S) = -23
+Client Clock (A): 22
+
+
+Client Clock (B): 23
+Offset (S) = -120
+Client Clock (A): 25
+
+
+Client Clock (B): 28
+Offset (S) = -18
+Client Clock (A): 16
+
+
+Client Clock (B): 18
+Offset (S) = -128
+Client Clock (A): 20
+
+
+Client Clock (B): 23
+Offset (S) = -123
+Client Clock (A): 24
+
+
+Client Clock (B): 25
+Offset (S) = -27
+Client Clock (A): 7
+
+
+Client Clock (B): 8
+Offset (S) = -135
+Client Clock (A): 9
+
+
+Client Clock (B): 16
+Offset (S) = -127
+Client Clock (A): 19
+
+
+Client Clock (B): 23
+Offset (S) = -25
+Client Clock (A): 5
+
+
+Client Clock (B): 6
+Offset (S) = -17
+Client Clock (A): 7
+
+
+Client Clock (B): 8
+Offset (S) = -6
+Client Clock (A): 5
+
+
+Client Clock (B): 6
+Offset (S) = -146
+Client Clock (A): 8
+
+
+Client Clock (B): 10
+Offset (S) = -17
+Client Clock (A): 11
+
+
+Client Clock (B): 14
+Offset (S) = -141
+Client Clock (A): 16
+
+
+Client Clock (B): 25
+Offset (S) = -138
+Client Clock (A): 26
+
+
+Client Clock (B): 32
+Offset (S) = -134
+Client Clock (A): 39
+
+
+Client Clock (B): 40
+Offset (S) = -140
+Client Clock (A): 45
+
+
+Client Clock (B): 47
+Offset (S) = -138
+Client Clock (A): 48
+
+
+Client Clock (B): 49
+Offset (S) = -24
+Client Clock (A): 27
+
+
+Client Clock (B): 28
+Offset (S) = -149
+Client Clock (A): 34
+
+
+Client Clock (B): 37
+Offset (S) = -146
+Client Clock (A): 38
+
+
+Client Clock (B): 39
+Offset (S) = -147
+Client Clock (A): 41
+
+
+Client Clock (B): 43
+Offset (S) = -135
+Client Clock (A): 44
+
+
+Client Clock (B): 51
+Offset (S) = -32
+Client Clock (A): 22
+
+
+Client Clock (B): 25
+Offset (S) = -128
+Client Clock (A): 26
+
+
+Client Clock (B): 28
+Offset (S) = -22
+Client Clock (A): 10
+
+
+Client Clock (B): 12
+Offset (S) = -113
+Client Clock (A): 13
+
+
+Client Clock (B): 14
+Offset (S) = -18
+Client Clock (A): 16
+
+
+Client Clock (B): 19
+Offset (S) = -111
+Client Clock (A): 20
+
+
+Client Clock (B): 21
+Offset (S) = -99
+Client Clock (A): 35
+
+
+Client Clock (B): 36
+Offset (S) = -20
+Client Clock (A): 18
+
+
+Client Clock (B): 26
+Offset (S) = -10
+Client Clock (A): 20
+
+
+Client Clock (B): 28
+Offset (S) = -8
+Client Clock (A): 22
+
+
+Client Clock (B): 24
+Offset (S) = -3
+Client Clock (A): 23
+
+
+Client Clock (B): 28
+Offset (S) = -109
+Client Clock (A): 30
+
+
+Client Clock (B): 32
+Offset (S) = -13
+Client Clock (A): 21
+
+
+Client Clock (B): 24
+Offset (S) = -101
+Client Clock (A): 26
+
+
+Client Clock (B): 31
+Offset (S) = -16
+Client Clock (A): 17
+
+
+Client Clock (B): 19
+Offset (S) = -105
+Client Clock (A): 20
+
+
+Client Clock (B): 24
+Offset (S) = -15
+Client Clock (A): 11
+
+
+Client Clock (B): 12
+Offset (S) = -96
+Client Clock (A): 14
+
+
+Client Clock (B): 17
+Offset (S) = -14
+Client Clock (A): 6
+
+
+Client Clock (B): 9
+Offset (S) = -97
+Client Clock (A): 11
+
+
+Client Clock (B): 12
+Offset (S) = -95
+Client Clock (A): 16
+
+
+Client Clock (B): 17
+Offset (S) = -97
+Client Clock (A): 20
+
+
+Client Clock (B): 22
+Offset (S) = -21
+Client Clock (A): 3
+
+
+Client Clock (B): 6
+Offset (S) = -10
+Client Clock (A): 0
+
+
+Client Clock (B): 2
+Offset (S) = -112
+Client Clock (A): 5
+
+
+Client Clock (B): 6
+Offset (S) = -101
+Client Clock (A): 13
+
+
+Client Clock (B): 14
+Offset (S) = -99
+Client Clock (A): 15
+
+
+Client Clock (B): 16
+Offset (S) = -22
+Client Clock (A): 17
+
+
+Client Clock (B): 19
+Offset (S) = -6
+Client Clock (A): 16
+
+
+Client Clock (B): 19
+Offset (S) = -97
+Client Clock (A): 22
+
+
+Client Clock (B): 23
+Offset (S) = -17
+Client Clock (A): 9
+
+
+Client Clock (B): 15
+Offset (S) = -84
+Client Clock (A): 20
+
+
+Client Clock (B): 22
+Offset (S) = -75
+Client Clock (A): 23
+
+
+Client Clock (B): 26
+Closing down connection...

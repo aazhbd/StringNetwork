@@ -1,0 +1,302 @@
+Received 1 from Connection Thread-0.
+Server Clock (B): 4
+Server Clock (A): 1
+
+
+Received 5 from Connection Thread-0.
+Server Clock (B): 6
+Server Clock (A): 2
+
+
+Received 19 from Connection Thread-0.
+Server Clock (B): 7
+Server Clock (A): 5
+
+
+Received 10 from Connection Thread-0.
+Server Clock (B): 9
+Server Clock (A): 3
+
+
+Received 2 from Connection Thread-1.
+Received 6 from Connection Thread-0.
+Server Clock (B): 27
+Server Clock (A): 7
+
+
+Received 15 from Connection Thread-1.
+Server Clock (B): 11
+Server Clock (A): 6
+
+
+Received 11 from Connection Thread-0.
+Server Clock (B): 10
+Server Clock (A): 5
+
+
+Server Clock (B): 7
+Server Clock (A): 3
+
+
+Received 9 from Connection Thread-1.
+Server Clock (B): 9
+Server Clock (A): 4
+
+
+Received 13 from Connection Thread-1.
+Received 18 from Connection Thread-0.
+Server Clock (B): 31
+Server Clock (A): 12
+
+
+Received 20 from Connection Thread-1.
+Server Clock (B): 22
+Server Clock (A): 10
+
+
+Received 16 from Connection Thread-0.
+Server Clock (B): 19
+Server Clock (A): 9
+
+
+Server Clock (B): 14
+Server Clock (A): 6
+
+
+Received 21 from Connection Thread-1.
+Server Clock (B): 9
+Server Clock (A): 7
+
+
+Received 24 from Connection Thread-1.
+Server Clock (B): 9
+Server Clock (A): 8
+
+
+Received 32 from Connection Thread-0.
+Server Clock (B): 12
+Server Clock (A): 10
+
+
+Received 38 from Connection Thread-0.
+Received 20 from Connection Thread-1.
+Server Clock (B): 21
+Server Clock (A): 15
+
+
+Received 37 from Connection Thread-0.
+Server Clock (B): 20
+Server Clock (A): 14
+
+
+Received 25 from Connection Thread-1.
+Server Clock (B): 38
+Server Clock (A): 15
+
+
+Received 43 from Connection Thread-0.
+Server Clock (B): 50
+Server Clock (A): 21
+
+
+Server Clock (B): 27
+Server Clock (A): 13
+
+
+Received 33 from Connection Thread-1.
+Server Clock (B): 20
+Server Clock (A): 13
+
+
+Received 42 from Connection Thread-0.
+Received 24 from Connection Thread-1.
+Server Clock (B): 38
+Server Clock (A): 20
+
+
+Received 43 from Connection Thread-0.
+Server Clock (B): 27
+Server Clock (A): 18
+
+
+Server Clock (B): 20
+Server Clock (A): 11
+
+
+Received 49 from Connection Thread-0.
+Server Clock (B): 14
+Server Clock (A): 14
+
+
+Received 53 from Connection Thread-0.
+Server Clock (B): 16
+Server Clock (A): 16
+
+
+Received 38 from Connection Thread-0.
+Server Clock (B): 18
+Server Clock (A): 14
+
+
+Received 27 from Connection Thread-0.
+Server Clock (B): 19
+Server Clock (A): 12
+
+
+Received 15 from Connection Thread-1.
+Received 7 from Connection Thread-0.
+Server Clock (B): 22
+Server Clock (A): 8
+
+
+Received 24 from Connection Thread-1.
+Server Clock (B): 17
+Server Clock (A): 9
+
+
+Received 22 from Connection Thread-0.
+Server Clock (B): 22
+Server Clock (A): 10
+
+
+Received 26 from Connection Thread-1.
+Server Clock (B): 20
+Server Clock (A): 11
+
+
+Received 5 from Connection Thread-0.
+Server Clock (B): 21
+Server Clock (A): 7
+
+
+Received 32 from Connection Thread-1.
+Server Clock (B): 10
+Server Clock (A): 9
+
+
+Received 7 from Connection Thread-0.
+Server Clock (B): 26
+Server Clock (A): 8
+
+
+Received 28 from Connection Thread-1.
+Server Clock (B): 22
+Server Clock (A): 11
+
+
+Received 12 from Connection Thread-0.
+Server Clock (B): 15
+Server Clock (A): 7
+
+
+Received 38 from Connection Thread-1.
+Server Clock (B): 14
+Server Clock (A): 11
+
+
+Received 15 from Connection Thread-0.
+Server Clock (B): 18
+Server Clock (A): 8
+
+
+Received 33 from Connection Thread-1.
+Server Clock (B): 13
+Server Clock (A): 10
+
+
+Server Clock (B): 12
+Server Clock (A): 6
+
+
+Received 18 from Connection Thread-1.
+Server Clock (B): 8
+Server Clock (A): 6
+
+
+Received 20 from Connection Thread-1.
+Received 18 from Connection Thread-0.
+Server Clock (B): 21
+Server Clock (A): 11
+
+
+Received 24 from Connection Thread-1.
+Server Clock (B): 19
+Server Clock (A): 10
+
+
+Server Clock (B): 13
+Server Clock (A): 6
+
+
+Received 27 from Connection Thread-1.
+Server Clock (B): 10
+Server Clock (A): 8
+
+
+Received 34 from Connection Thread-1.
+Received 17 from Connection Thread-0.
+Server Clock (B): 18
+Server Clock (A): 13
+
+
+Received 43 from Connection Thread-1.
+Server Clock (B): 18
+Server Clock (A): 14
+
+
+Received 20 from Connection Thread-0.
+Server Clock (B): 19
+Server Clock (A): 10
+
+
+Received 48 from Connection Thread-1.
+Server Clock (B): 16
+Server Clock (A): 14
+
+
+Received 28 from Connection Thread-0.
+Server Clock (B): 18
+Server Clock (A): 12
+
+
+Received 63 from Connection Thread-1.
+Server Clock (B): 20
+Server Clock (A): 19
+
+
+Server Clock (B): 22
+Server Clock (A): 12
+
+
+Received 60 from Connection Thread-1.
+Received 7 from Connection Thread-0.
+Server Clock (B): 35
+Server Clock (A): 20
+
+
+Received 50 from Connection Thread-1.
+Server Clock (B): 24
+Server Clock (A): 18
+
+
+Server Clock (B): 21
+Server Clock (A): 11
+
+
+Received 55 from Connection Thread-1.
+Server Clock (B): 14
+Server Clock (A): 16
+
+
+Received 43 from Connection Thread-1.
+Server Clock (B): 21
+Server Clock (A): 16
+
+
+Received 52 from Connection Thread-1.
+Received 10 from Connection Thread-0.
+Server Clock (B): 29
+Server Clock (A): 18
+
+
+Received 36 from Connection Thread-1.
