@@ -14,7 +14,6 @@ import java.util.*;
  * require to adjust their local clk value to sync with global clk.
  */
 
-
 public class MultithreadedServer {
     Vector<ClientHandler> clients = new Vector<ClientHandler>();
     Vector<String> users = new Vector<String>();
@@ -34,7 +33,7 @@ public class MultithreadedServer {
         data.put("Thread-1", new ClockValues(0, 0, 0));
         data.put("Thread-2", new ClockValues(0, 0, 0));
         data.put("Thread-3", new ClockValues(0, 0, 0));
-   
+
         while (true) {
             /*New client accepted*/
             Socket client = servSocket.accept();
@@ -52,9 +51,8 @@ public class MultithreadedServer {
 
         try {
             probab_send = Integer.parseInt(args[0]);
-            probab_received = Integer.parseInt(args[1]);    
-        }
-        catch(Exception e) {
+            probab_received = Integer.parseInt(args[1]);
+        } catch (Exception e) {
             System.out.println("Enter command line parameters for probability values.");
         }
 
@@ -71,7 +69,7 @@ public class MultithreadedServer {
         * 2 indicate RECEIVE event
         * 3 indicate Internal Communication Event
         */
-        
+
         int choice[] = new int[100];
 
         for (int i = 0; i < probab_send; i++) {
@@ -129,11 +127,11 @@ public class MultithreadedServer {
             int hSize, sum, avg = 0, t_clk = 0, n;
             int offset = 0, preClock = 0, preOldClock = 0;
             try {
-                int flagR = 0, flagS = 1;   // these flags are used to sync SEND and RECIEVE events within a PO
+                int flagR = 0, flagS = 1; // these flags are used to sync SEND and RECIEVE events within a PO
                 String message = "";
                 String received = "";
-                received = in.readLine();   //read  is there any entry waiting in input buffer
-                
+                received = in.readLine(); //read  is there any entry waiting in input buffer
+
                 do {
                     /*
                     * Random selection within 3 events take place here!
@@ -141,18 +139,17 @@ public class MultithreadedServer {
                     Random rand = new Random();
                     int i = rand.nextInt(100);
                     int ch = choice[i];
-    
+
                     /* SEND Event*/
                     if (ch == 1) {
                         /*Server clock value update here by 1*/
                         t_clk = Integer.parseInt("" + this.values.get("SeverValue")) + 1;
                         this.values.put("SeverValue", t_clk);
 
-    
-                        if (flagR == 1){
-                            hSize = 4;      //total num of POs
+                        if (flagR == 1) {
+                            hSize = 4; //total num of POs
                             sum = Integer.parseInt("" + this.values.get("SeverValue"));
-                            System.out.println(+ this.values.get("SeverValue"));
+                            System.out.println(+this.values.get("SeverValue"));
 
                             /*
                             * Read Input buffer stream
@@ -162,7 +159,7 @@ public class MultithreadedServer {
                             */
                             message = in.readLine();
                             message = message.trim();
-                            if((message.equals("")) ){
+                            if ((message.equals(""))) {
                                 /*Sum all the PO's clock values including the MO's value */
                                 for (Map.Entry m : this.data.entrySet()) {
                                     /*tmpclock contains 3 tupple are: clock, offset, oldValue*/
@@ -172,7 +169,7 @@ public class MultithreadedServer {
                                 avg = sum / (hSize + 1);
                                 /* Update the MO clock value by the average */
                                 this.values.put("SeverValue", avg);
-                                System.out.println(+ this.values.get("SeverValue"));
+                                System.out.println(+this.values.get("SeverValue"));
 
                                 /* Calculate the offset and Send offset to all POs */
                                 for (ClientHandler c : clients) {
@@ -186,16 +183,16 @@ public class MultithreadedServer {
 
                                     int offset_s = this.data.get(c.getName()).getOffset();
                                     c.sendMessage("" + offset_s);
-                                } 
-                            }   //if((message.equals("")))
+                                }
+                            } //if((message.equals("")))
                             else {
                                 received = message;
                                 flagS = 1;
                                 flagR = 0;
                             }
-                        }                        
+                        }
                     }
-                    
+
                     /* RECEIVE Event*/
                     else if (ch == 2) {
                         /*Server clock value update here by 1*/
@@ -206,17 +203,17 @@ public class MultithreadedServer {
                             /* Received clock value decrypted here */
                             line = "" + Transfer.decrypt(Integer.parseInt(received));
                             n = Integer.parseInt(line);
-                            
+
                             /* PO send -1 to MO once it terminate */
                             if (n == -1) {
                                 break;
                             }
                             this.data.put(this.getName(), new ClockValues(n, 0, n));
-                            
-                                flagR = 1;
-                                flagS = 0;
+
+                            flagR = 1;
+                            flagS = 0;
                         }
-                    }                   
+                    }
 
                     /* Internal Communication Event*/
                     else {
@@ -224,7 +221,7 @@ public class MultithreadedServer {
                             /*Server clock value update here by 1*/
                             t_clk = Integer.parseInt("" + this.values.get("SeverValue")) + 1;
                             this.values.put("SeverValue", t_clk);
-                            /*thread to sleep for 100 milliseconds*/  
+                            /*thread to sleep for 100 milliseconds*/
                             Thread.sleep(100);
                         } catch (Exception e) {
                             System.out.println(e);
