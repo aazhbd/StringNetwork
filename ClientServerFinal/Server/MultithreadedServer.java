@@ -231,9 +231,7 @@ public class MultithreadedServer {
                         }
                     }
                 } while (true);
-            } catch (
-
-            IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             } finally {
                 try {
