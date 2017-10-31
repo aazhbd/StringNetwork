@@ -19,23 +19,20 @@ public class MultithreadedClient {
     private static BufferedReader in;
     private static PrintWriter out;
 
-    
     public static void main(String[] args) throws IOException {
 
-        int counter = 1;    //it containts the PO local clock value
-        int loop_var = 1;   //loop control variable
-
+        int counter = 1; //it containts the PO local clock value
+        int loop_var = 1; //loop control variable
 
         /*
         * Pass two command line parameters for the SEND and RECEIVE events
         */
         int probab_send = 0, probab_received = 0;
-        
+
         try {
             probab_send = Integer.parseInt(args[0]);
-            probab_received = Integer.parseInt(args[1]);    
-        }
-        catch(Exception e) {
+            probab_received = Integer.parseInt(args[1]);
+        } catch (Exception e) {
             System.out.println("Enter command line parameters for probability values.");
         }
 
@@ -52,14 +49,14 @@ public class MultithreadedClient {
         * 3 indicate Internal Communication Event
         */
         int choice[] = new int[100];
- 
-        for(int i = 0; i < probab_send; i++) {
+
+        for (int i = 0; i < probab_send; i++) {
             choice[i] = 1;
         }
-        for(int i = probab_send; i < probab_send + probab_received; i++) {
+        for (int i = probab_send; i < probab_send + probab_received; i++) {
             choice[i] = 2;
         }
-        for(int i = probab_send + probab_received; i < 100; i++) {
+        for (int i = probab_send + probab_received; i < 100; i++) {
             choice[i] = 3;
         }
 
@@ -75,11 +72,11 @@ public class MultithreadedClient {
 
             String response = "";
             String message = "";
-            
-            int flagS = 0, flagR = 1;   // these flags are used to sync SEND and RECIEVE events within a PO
+
+            int flagS = 0, flagR = 1; // these flags are used to sync SEND and RECIEVE events within a PO
 
             /* Initial local clk value SEND to MO after encryption*/
-            out.println(Transfer.encrypt(counter)+"\n");    
+            out.println(Transfer.encrypt(counter) + "\n");
             do {
                 /*
                 * Random selection within 3 events take place here!
@@ -89,7 +86,7 @@ public class MultithreadedClient {
                 int c = choice[i];
 
                 /* SEND Event*/
-                if (c == 1) { 
+                if (c == 1) {
                     counter++;
                     /*
                     * Read from input stream buffer using readLine() until it gets 
@@ -100,16 +97,15 @@ public class MultithreadedClient {
                     */
                     response = in.readLine();
                     response = response.trim();
-                    if((response.equals("")) ){
-                        System.out.println(+ counter);
-                        out.println(Transfer.encrypt(counter)+"\n");
-                    }
-                    else {
+                    if ((response.equals(""))) {
+                        System.out.println(+counter);
+                        out.println(Transfer.encrypt(counter) + "\n");
+                    } else {
                         message = response;
                         flagS = 1;
                     }
                 }
-                
+
                 /* RECEIVE Event*/
                 else if (c == 2) {
                     counter++;
@@ -122,19 +118,19 @@ public class MultithreadedClient {
                         * If randomly pick number is 33 then set offset value to 0;
                         * Again if the number is 66 then add additional 100 with the received offset value
                         */
-                        if (i == 33){
+                        if (i == 33) {
                             offset = 0;
                         }
-                        if (i == 66){
+                        if (i == 66) {
                             offset = offset + 100;
                         }
-                        
+
                         /* Received offset value from MO adjust here to sync the PO's local CLK*/
-                        int temp_counter = offset + counter + 1; 
-                        if (temp_counter >= 0){
+                        int temp_counter = offset + counter + 1;
+                        if (temp_counter >= 0) {
                             counter = temp_counter;
                         }
-                        System.out.println(+ counter);
+                        System.out.println(+counter);
 
                         flagS = 0;
                         flagR = 1;
@@ -153,8 +149,8 @@ public class MultithreadedClient {
                     }
                 }
                 loop_var++;
-            } while (loop_var <= 10000);    //loop will continue for 10,000 times
-            
+            } while (loop_var <= 10000); //loop will continue for 10,000 times
+
             /* 
             *Once PO done its execution then it will set the local CLK value to -1
             * and SEND it to the MO as a notofication that its terminating.
