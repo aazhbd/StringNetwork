@@ -1,0 +1,6 @@
+element(X,[X,_]).
+element(X,[_,List]):- element(X,List).
+
+delete([],List,[]).
+delete([Head|Tail],List1,List2):- element(Head,List1),delete(Tail,List1,List2).
+delete([Head|Tail],List1,[Head|List2]):- delete(Tail,List1,List2).

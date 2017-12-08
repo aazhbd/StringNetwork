@@ -1,0 +1,49 @@
+Script started on Thu Apr 08 16:04:22 1999
+jovis{rraje}1: clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo   
+  I I I I I I I      8     8   8           8     8     o  8    8  
+  I I I I I I I      8         8           8     8        8    8  
+  I I I I I I I      8         8           8      ooooo   8oooo   
+  I  \ `+' /  I      8         8           8           8  8       
+   \  `-+-'  /       8     o   8           8     o     8  8       
+    `-__|__-'         ooooo    8oooooo  ooo8ooo   ooooo   8       
+        |                                                         
+  ------+------     Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+                                                                  
+
+> (load "member")
+;; Loading file member ...
+;; Loading of file member is finished.
+T
+> (trace is-member)
+;; Tracing function IS-MEMBER.
+(IS-MEMBER)
+> (is-ma ember '(1 2 3) '1)
+
+1. Trace: (IS-MEMBER '(1 2 3) '1)Is a member of the list
+1. Trace: IS-MEMBER ==> "Is a member of the list"
+"Is a member of the list"
+> (is-member '(1 2 3) '3)
+
+1. Trace: (IS-MEMBER '(1 2 3) '3)
+2. Trace: (IS-MEMBER '(2 3) '3)
+3. Trace: (IS-MEMBER '(3) '3)Is a member of the list
+3. Trace: IS-MEMBER ==> "Is a member of the list"
+2. Trace: IS-MEMBER ==> "Is a member of the list"
+1. Trace: IS-MEMBER ==> "Is a member of the list"
+"Is a member of the list"
+> (is-member '(1 2 3) '5)
+
+1. Trace: (IS-MEMBER '(1 2 3) '5)
+2. Trace: (IS-MEMBER '(2 3) '5)
+3. Trace: (IS-MEMBER '(3) '5)
+4. Trace: (IS-MEMBER 'NIL '5)Not a member of the list
+4. Trace: IS-MEMBER ==> "Not a member of the list"
+3. Trace: IS-MEMBER ==> "Not a member of the list"
+2. Trace: IS-MEMBER ==> "Not a member of the list"
+1. Trace: IS-MEMBER ==> "Not a member of the list"
+"Not a member of the list"
+> 
+Bye.
+jovis{rraje}2: ^D
+script done on Thu Apr 08 16:05:21 1999

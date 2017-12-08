@@ -1,0 +1,65 @@
+Script started on Thu Apr 08 15:59:33 1999
+jovis{rraje}1: clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo   
+  I I I I I I I      8     8   8           8     8     o  8    8  
+  I I I I I I I      8         8           8     8        8    8  
+  I I I I I I I      8         8           8      ooooo   8oooo   
+  I  \ `+' /  I      8         8           8           8  8       
+   \  `-+-'  /       8     o   8           8     o     8  8       
+    `-__|__-'         ooooo    8oooooo  ooo8ooo   ooooo   8       
+        |                                                         
+  ------+------     Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+                                                                  
+
+> ("load "double")
+;; Loading file double ...
+;; Loading of file double is finished.
+T
+> (trace double)
+;; Tracing function DOUBLE.
+(DOUBLE)
+> (double '(1))
+
+1. Trace: (DOUBLE '(1))
+2. Trace: (DOUBLE 'NIL)
+2. Trace: DOUBLE ==> NIL
+1. Trace: DOUBLE ==> (1 1)
+(1 1)
+> (double '(1 2))
+
+1. Trace: (DOUBLE '(1 2))
+2. Trace: (DOUBLE '(2))
+3. Trace: (DOUBLE 'NIL)
+3. Trace: DOUBLE ==> NIL
+2. Trace: DOUBLE ==> (2 2)
+1. Trace: DOUBLE ==> (1 1 2 2)
+(1 1 2 2)
+> (double '(1 2 3 4 5 6 7 8 9 0))
+
+1. Trace: (DOUBLE '(1 2 3 4 5 6 7 8 9 0))
+2. Trace: (DOUBLE '(2 3 4 5 6 7 8 9 0))
+3. Trace: (DOUBLE '(3 4 5 6 7 8 9 0))
+4. Trace: (DOUBLE '(4 5 6 7 8 9 0))
+5. Trace: (DOUBLE '(5 6 7 8 9 0))
+6. Trace: (DOUBLE '(6 7 8 9 0))
+7. Trace: (DOUBLE '(7 8 9 0))
+8. Trace: (DOUBLE '(8 9 0))
+9. Trace: (DOUBLE '(9 0))
+10. Trace: (DOUBLE '(0))
+11. Trace: (DOUBLE 'NIL)
+11. Trace: DOUBLE ==> NIL
+10. Trace: DOUBLE ==> (0 0)
+9. Trace: DOUBLE ==> (9 9 0 0)
+8. Trace: DOUBLE ==> (8 8 9 9 0 0)
+7. Trace: DOUBLE ==> (7 7 8 8 9 9 0 0)
+6. Trace: DOUBLE ==> (6 6 7 7 8 8 9 9 0 0)
+5. Trace: DOUBLE ==> (5 5 6 6 7 7 8 8 9 9 0 0)
+4. Trace: DOUBLE ==> (4 4 5 5 6 6 7 7 8 8 9 9 0 0)
+3. Trace: DOUBLE ==> (3 3 4 4 5 5 6 6 7 7 8 8 9 9 0 0)
+2. Trace: DOUBLE ==> (2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 0 0)
+1. Trace: DOUBLE ==> (1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 0 0)
+(1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 0 0)
+> 
+Bye.
+jovis{rraje}2: ^D
+script done on Thu Apr 08 16:00:18 1999

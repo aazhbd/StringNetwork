@@ -1,0 +1,33 @@
+Script started on Thu Apr 08 15:58:14 1999
+jovis{rraje}1: clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo   
+  I I I I I I I      8     8   8           8     8     o  8    8  
+  I I I I I I I      8         8           8     8        8    8  
+  I I I I I I I      8         8           8      ooooo   8oooo   
+  I  \ `+' /  I      8         8           8           8  8       
+   \  `-+-'  /       8     o   8           8     o     8  8       
+    `-__|__-'         ooooo    8oooooo  ooo8ooo   ooooo   8       
+        |                                                         
+  ------+------     Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+                                                                  
+
+> (load "append")
+;; Loading file append ...
+;; Loading of file append is finished.
+T
+> (trace my-append)
+;; Tracing function MY-APPEND.
+(MY-APPEND)
+> (my-append '(1 2 3) (  '(4 5))
+
+1. Trace: (MY-APPEND '(1 2 3) '(4 5))
+2. Trace: (MY-APPEND '(2 3) '(4 5))
+3. Trace: (MY-APPEND '(3) '(4 5))
+4. Trace: (MY-APPEND 'NIL '(4 5))
+4. Trace: MY-APPEND ==> (4 5)
+3. Trace: MY-APPEND ==> (3 4 5)
+2. Trace: MY-APPEND ==> (2 3 4 5)
+1. Trace: MY-APPEND ==> (1 2 3 4 5)
+(1 2 3 4 5)
+jovis{rraje}2: 
+script done on Thu Apr 08 15:59:27 1999

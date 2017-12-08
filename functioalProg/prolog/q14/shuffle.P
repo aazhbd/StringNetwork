@@ -1,0 +1,7 @@
+lengthList(List,_) :- not(is_list(List)), write('Not a list'), !, fail.
+lengthList([]     , 0 ).
+lengthList([_|Tail] , Len ) :- lengthList(Tail, Counter) , Len is Counter + 1.
+
+shuffle(List1, List2, _) :- lengthList(List1, Len1), lengthList(List2, Len2), not(Len1 = Len2), write('lists are not equal'), !, fail.
+shuffle([], [], []).
+shuffle([Head1|Tail1], [Head2|Tail2], [Head1, Head2|Tail3]) :- shuffle(Tail1, Tail2, Tail3).

@@ -1,0 +1,3 @@
+delete2([],A,[]).
+delete2([H|T],A,Result) :- H=A, delete2(T,A,Result),!.
+delete2([H|T],A,[H|Result]) :- delete2(T,A,Result).

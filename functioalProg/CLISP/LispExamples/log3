@@ -1,0 +1,58 @@
+Script started on Thu Apr 08 16:00:24 1999
+jovis{rraje}1: clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo   
+  I I I I I I I      8     8   8           8     8     o  8    8  
+  I I I I I I I      8         8           8     8        8    8  
+  I I I I I I I      8         8           8      ooooo   8oooo   
+  I  \ `+' /  I      8         8           8           8  8       
+   \  `-+-'  /       8     o   8           8     o     8  8       
+    `-__|__-'         ooooo    8oooooo  ooo8ooo   ooooo   8       
+        |                                                         
+  ------+------     Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+                                                                  
+
+> (load "fact")
+;; Loading file fact ...
+;; Loading of file fact is finished.
+T
+> (trace fact)
+;; Tracing function FACT.
+(FACT)
+> (fact 4)
+
+1. Trace: (FACT '4)
+2. Trace: (FACT '3)
+3. Trace: (FACT '2)
+4. Trace: (FACT '1)
+4. Trace: FACT ==> 1
+3. Trace: FACT ==> 2
+2. Trace: FACT ==> 6
+1. Trace: FACT ==> 24
+24
+> (fact '10)
+
+1. Trace: (FACT '10)
+2. Trace: (FACT '9)
+3. Trace: (FACT '8)
+4. Trace: (FACT '7)
+5. Trace: (FACT '6)
+6. Trace: (FACT '5)
+7. Trace: (FACT '4)
+8. Trace: (FACT '3)
+9. Trace: (FACT '2)
+10. Trace: (FACT '1)
+10. Trace: FACT ==> 1
+9. Trace: FACT ==> 2
+8. Trace: FACT ==> 6
+7. Trace: FACT ==> 24
+6. Trace: FACT ==> 120
+5. Trace: FACT ==> 720
+4. Trace: FACT ==> 5040
+3. Trace: FACT ==> 40320
+2. Trace: FACT ==> 362880
+1. Trace: FACT ==> 3628800
+3628800
+> 
+Bye.
+jovis{rraje}2: ^D
+script done on Thu Apr 08 16:01:07 1999

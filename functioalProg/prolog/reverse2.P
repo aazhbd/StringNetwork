@@ -1,0 +1,2 @@
+reverse2([X|Y],Z,W) :- reverse2(Y,[X|Z],W).
+reverse2([],X,X).

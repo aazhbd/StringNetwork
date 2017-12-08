@@ -1,0 +1,5 @@
+suffix(List,_,_):- not(is_list(List)), write('Not a list'), !, fail.
+suffix(_,List,_):- not(is_list(List)), write('Not a list'), !, fail.
+suffix([], List, List).
+suffix([Head|List_1], List_2, [Head|List_3]) :- suffix(List_1, List_2, List_3).
+

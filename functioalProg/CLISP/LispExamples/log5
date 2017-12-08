@@ -1,0 +1,29 @@
+Script started on Thu Apr 08 16:02:43 1999
+jovis{rraje}1: clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo   
+  I I I I I I I      8     8   8           8     8     o  8    8  
+  I I I I I I I      8         8           8     8        8    8  
+  I I I I I I I      8         8           8      ooooo   8oooo   
+  I  \ `+' /  I      8         8           8           8  8       
+   \  `-+-'  /       8     o   8           8     o     8  8       
+    `-__|__-'         ooooo    8oooooo  ooo8ooo   ooooo   8       
+        |                                                         
+  ------+------     Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+                                                                  
+
+> (load "list")
+;; Loading file list ...
+;; Loading of file list is finished.
+T
+> (trace list)
+;; Tracing function LIST.
+(LIST)
+> (makelist 'a)
+(A)
+> (makelist '(a))
+((A))
+> (makelist '(a b))
+((A B))
+Bye.
+jovis{rraje}2: ^D
+script done on Thu Apr 08 16:04:15 1999

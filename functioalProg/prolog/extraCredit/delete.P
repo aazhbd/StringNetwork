@@ -1,0 +1,8 @@
+deleteOne([], _, []).
+deleteOne([Head|List_1], X, List_3) :- Head=X, deleteOne(List_1, X, List_3),!.
+deleteOne([Head|List_1], X, [Head|List_3]) :- deleteOne(List_1, X, List_3).
+
+deleteAll(List, _, _):- not(is_list(List)), write('Not a list'), !, fail.
+deleteAll(_, List, _):- not(is_list(List)), write('Not a list'), !, fail.
+deleteAll(List, [], List).
+deleteAll(List_1, [Head|List_2], List_3):- deleteOne(List_1, Head, X), deleteAll(X, List_2, List_3).

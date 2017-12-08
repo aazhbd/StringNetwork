@@ -1,0 +1,3 @@
+lengthList(List,_) :- not(is_list(List)), write('Not a list'), !, fail.
+lengthList([]     , 0 ).
+lengthList([_|Tail] , Len ) :- lengthList(Tail, Counter) , Len is Counter + 1.

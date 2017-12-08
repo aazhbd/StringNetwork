@@ -1,0 +1,11 @@
+lengthList([]     , 0 ).
+lengthList([_|Tail] , Len) :- lengthList(Tail, Counter) , Len is Counter + 1.
+
+secondLastElement(List,_) :- not(is_list(List)), write('Not a list'), !, fail.
+secondLastElement(List,_) :- lengthList(List, Len), Len == 0, write('No element'), !, fail.
+secondLastElement(List,_) :- lengthList(List, Len), Len == 1, write('Single element'), !, fail.
+secondLastElement([Head|Tail], X) :- lengthList([Head|Tail], Len), Len == 2, !, X is Head.
+secondLastElement([_|Tail], X) :- secondLastElement(Tail, X).
+
+
+
